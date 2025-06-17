@@ -1,3 +1,5 @@
+import { Plus } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import {
   PageActions,
@@ -8,7 +10,6 @@ import {
   PageHeaderContent,
   PageTitle,
 } from "@/components/ui/page-container";
-import { Plus } from "lucide-react";
 
 const DoctorsPage = () => {
   return (
@@ -19,8 +20,10 @@ const DoctorsPage = () => {
           <PageDescription>Gerencie os médicos da sua clínica</PageDescription>
         </PageHeaderContent>
         <PageActions>
-          <Button>Adicionar médico</Button>
-          <Plus />
+          <Button>
+            <Plus />
+            Adicionar médico
+          </Button>
         </PageActions>
       </PageHeader>
       <PageContent>

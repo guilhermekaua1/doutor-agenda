@@ -32,9 +32,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { doctorsTable } from "@/db/schema";
 
 import { medicalSpecialties } from "../_constants";
-import { doctorsTable } from "@/db/schema";
 
 const formSchema = z
   .object({
@@ -68,7 +68,7 @@ const formSchema = z
   );
 
 interface UpsertDoctorFormProps {
-  doctor?: typeof doctorsTable.$inferInsert;
+  doctor?: typeof doctorsTable.$inferSelect;
   onSuccess?: () => void;
 }
 
@@ -97,6 +97,7 @@ const UpsertDoctorForm = ({ doctor, onSuccess }: UpsertDoctorFormProps) => {
       toast.error("Erro ao adicionar médico.");
     },
   });
+
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     upsertDoctorAction.execute({
       ...values,
@@ -113,7 +114,7 @@ const UpsertDoctorForm = ({ doctor, onSuccess }: UpsertDoctorFormProps) => {
         <DialogTitle>{doctor ? doctor.name : "Adicionar médico"}</DialogTitle>
         <DialogDescription>
           {doctor
-            ? "Edite as informações do médico."
+            ? "Edite as informações desse médico."
             : "Adicione um novo médico."}
         </DialogDescription>
       </DialogHeader>
